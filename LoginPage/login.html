@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<title>Login From</title>
+<link rel="stylesheet" href="login.css" />
+<html>
+<script>
+    var users = JSON.parse(localStorage.getItem("usersList"));
+    console.log(users);
+    function validateForm(){
+        var email = document.forms["RegForm"]["EMail"];
+        var password = document.forms["RegForm"]["Password"];
+
+        if(email.value == ""){
+            window.alert("Please enter the email");
+            return false;
+        }
+        if(password.value == ""){
+            window.alert("Please enter the password");
+            return false;
+        }
+
+        if(users.some(person=>(person.email === email.value&& person.password === password.value))){
+            window.alert("user found");
+            localStorage.setItem("loggedInUserEmail",email.value);
+            return true;
+        }else{
+            window.alert("User not found");
+            return false;
+        }
+    }
+</script>
+<body>
+    <div class="heading">
+        <h1>Login</h1>
+    </div>
+
+    <div class="form_Container">
+
+        <form action="../loginSuccessfull/loginSuccessful.html" name="RegForm" onsubmit="return validateForm()">
+
+            <table>
+                <tr>
+                    <td id="row">Email</td>
+                    <td> <input type="email" name="EMail" placeholder="anne.humter@mail.com"></td>
+                </tr>
+                <tr>
+                    <td id="row">Password</td>
+                    <td> <input type="password" name="Password" placeholder="******"></td>
+                </tr>
+                </table>
+        <!-- </form> -->
+
+    </div>
+
+    <div class="submit">
+        <input type="submit" class="input1" value="Login" name="Submit" />
+    </div>
+</form>
+</body>
+
+</html>

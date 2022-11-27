@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      var loggenInemail = localStorage.getItem("loggedInUserEmail");
+      var print = `
+      <div class="success">
+      <h2>Login Successful</h2>
+      <p><strong>Welcome! ${loggenInemail}</strong></p>
+    </div>
+      `;
+      window.onload = function what(){
+        document.body.innerHTML = print;
+      }
+
+    </script>
+  </head>
+
+  <body> 
+  </body>
+</html>
